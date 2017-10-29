@@ -16,6 +16,21 @@ class CrearTablaMedidas extends Migration
     {
         Schema::create('medidas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('Estado');
+            $table->integer('Avance');
+            $table->date('Fecha_Inicio');
+            $table->date('Fecha_Termino');
+
+            /*
+            //fk
+            $table->integer('Id_Usuario')->unsigned()->nullable();
+            $table->foreign('Id_Usuario')->references('id')->on('users');
+
+            $table->integer('Id_Catastrofe')->unsigned()->nullable();
+            $table->foreign('Id_Catastrofe')->references('id')->on('catastrofe');
+            */
+
+
             $table->timestamps();
         });
     }
@@ -27,6 +42,9 @@ class CrearTablaMedidas extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('medidas');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

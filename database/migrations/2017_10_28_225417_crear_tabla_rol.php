@@ -14,7 +14,8 @@ class CrearTablaRol extends Migration
     public function up()
     {
         Schema::create('rol', function (Blueprint $table) {
-            $table->increments('Id_Rol');
+            $table->increments('id');
+
             $table->integer('Tipo_Rol');
             $table->timestamps();
         });

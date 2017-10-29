@@ -14,8 +14,9 @@ class CrearTablaBien extends Migration
     public function up()
     {
         Schema::create('bien', function (Blueprint $table) {
-            $table->increments('Id_Bien');
+            $table->increments('id');
             $table->string('Nombre_Bien');
+            $table->string('Tipo_Bien');
             $table->timestamps();
         });
     }

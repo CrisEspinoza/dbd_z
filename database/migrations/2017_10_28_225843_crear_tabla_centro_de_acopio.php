@@ -15,6 +15,22 @@ class CrearTablaCentroDeAcopio extends Migration
     {
         Schema::create('centro_de_acopio', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('Estado');
+            $table->integer('Avance');
+            $table->date('Fecha_Inicio');
+            $table->date('Fecha_Termino');
+            $table->integer('Id_Usuario');
+            $table->integer('Id_Catastrofe');
+
+            $table->string('Nombre_Centro_Acopio');
+            /*
+            $table->integer('Id_Medida')->unsigned()->nullable();
+            $table->foreign('Id_Medida')->references('id')->on('medidas');
+
+            */
+
+
+
             $table->timestamps();
         });
     }
@@ -26,6 +42,8 @@ class CrearTablaCentroDeAcopio extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('centro_de_acopio');
+        Schema::enableForeignKeyConstraints();
     }
 }

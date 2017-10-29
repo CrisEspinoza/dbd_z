@@ -15,6 +15,16 @@ class CrearTablaCastastrofe extends Migration
     {
         Schema::create('catastrofe', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('Tipo_Catastrofe');
+
+            /*
+            //fk
+            $table->integer('Id_Ubicacion')->unsigned()->nullable();
+            $table->foreign('Id_Ubicacion')->references('id')->on('ubicacion');
+
+            $table->integer('Id_Usuario')->unsigned()->nullable();
+            $table->foreign('Id_Usuario')->references('id')->on('users');
+            */
             $table->timestamps();
         });
     }
@@ -26,6 +36,9 @@ class CrearTablaCastastrofe extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('catastrofe');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

@@ -14,13 +14,14 @@ class CrearTablaHistorial extends Migration
     public function up()
     {
         Schema::create('historial', function (Blueprint $table) {
-            $table->increments('Id_Historial');
+            $table->increments('id');
             $table->date('Fecha');
 
+            /*
             //fk
-            $table->integer('Rut')->unsigned()->nullable();
-            $table->integer('Rut')->references('Rut')->on('users');
-
+            $table->integer('Id_Usuario')->unsigned()->nullable();
+            $table->foreign('Id_Usuario')->references('id')->on('users');
+            */
             $table->timestamps();
         });
     }
